@@ -1049,3 +1049,41 @@ const config = defineConfig({
 
 ```
 
+# 组件方法
+> page-model组件暴露了一些对内部操作的方法
+
+## refreshTableData
+> 刷新列表数据
+
+## resetTableData
+> 回到第一页刷新列表数据
+
+## updateTableData
+> 更新列表数据
+
+## getTableData
+> 获取当前的列表数据
+
+## hideForm
+> 隐藏表单
+
+## showForm
+> 显示表单
+
+## updateSelection
+> 更新多选数据
+
+## getSelection
+> 获取多选数据
+
+## updateRadioData
+> 更新单选数据
+
+## getRadioData
+> 获取单选数据
+
+## clearSelection
+> 清除多选数据
+
+## showExport
+> 显示导出工具
