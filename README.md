@@ -469,6 +469,34 @@ table: {
 
 ```
 
+#### 表格的多选
+
+``` js
+
+table: {
+  // 开启多选功能
+  selectable: true,
+  // 监听多选事件
+  // 也可以通过组件的方法获取当前多选的数据
+  events: {
+    selectionChange(selections) {
+      currentSelections = selections
+    }
+  },
+  // 配置多选所需要的操作
+  selectableButtons: [
+    {
+      text: '批量删除',
+      event: 'multDelete',
+      props: {
+        type: 'primary',
+      }
+    }
+  ]
+}
+
+```
+
 ### form表单
 > form的配置决定新增和编辑表单的内容和样式
 
