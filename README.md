@@ -526,8 +526,8 @@ const onSetting = (row) => {
 
 
 // 第二种情况，表格渲染元素的按钮
-// 在单元格中，可以监听jsx的事件，直接调用自己定义的函数
-// 也可以通过renderFn中的this找到pagemodel组件向外提交一个自定义事。此处不进行说明
+
+// 1、在单元格中，可以监听jsx的事件，直接调用自己定义的函数
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
@@ -555,6 +555,42 @@ table: {
     }
   ]
 }
+
+// 2、通过pagemodel提交自定义事件
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+
+const onSetting = (row) => {
+  // 跳转其他页面
+  router.push(`/pages/setting?pId=${row.id}`)
+}
+
+table: {
+  els: [
+    {
+      label: '设置',
+      renderFn(row) {
+        
+        // 监听按钮点击事件
+        const onClick = () => {
+          // this.manager.context指向pageModel组件实例
+          this.manager.context.$emit('setting', row)
+        }
+
+        return (
+          <el-button onClick={ onClick }>设置</el-button>
+        )
+      }
+    }
+  ]
+}
+
+
+<page-model 
+  :config="config"
+  @setting="onSetting"
+/>
 
 ```
 
