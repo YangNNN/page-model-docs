@@ -497,6 +497,60 @@ table: {
 
 ```
 
+#### 表格的按钮事件处理
+
+``` js
+
+// 第一种情况，操作栏按钮
+
+// 操作栏按钮需要在子项配置event属性，可以在page-model组件监听该事件
+table: {
+  operate: {
+    els: [
+      {
+        text: '设置',
+        event: 'setting'
+      }
+    ]
+  }
+}
+
+const onSetting = (row) => {
+  // 处理事件逻辑
+}
+
+<page-model 
+  :config="config"
+  @setting="onSetting"
+/>
+
+
+// 第二种情况，表格渲染元素的按钮
+// 在单元格中，可以监听jsx的事件，直接调用自己定义的函数
+const onSetting = (row) => {
+  // 处理事件逻辑
+}
+
+table: {
+  els: [
+    {
+      label: '设置',
+      renderFn(row) {
+
+        const onClick = () => {
+          onSetting(row)
+        }
+
+        return (
+          <el-button onClick={ onClick }>设置</el-button>
+        )
+      }
+    }
+  ]
+}
+
+```
+
 ### form表单
 > form的配置决定新增和编辑表单的内容和样式
 
